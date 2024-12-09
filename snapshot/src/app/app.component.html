@@ -1,0 +1,8 @@
+<section class="w-full h-full min-h-full my-auto bg-dark overflow-auto">
+    <app-toast-container></app-toast-container>
+    <router-outlet></router-outlet>
+    <div class="px-5 py-2 m-2 flex items-center gap-2 bg-black/50 text-xs text-white font-medium fixed bottom-0 right-0 rounded-full cursor-pointer" title="Compositor is {{status}}">
+        <div class="w-[8px] h-[8px] rounded-full {{status == 'Offline'?'bg-red-500':'bg-green-700'}}"></div>
+        <span class="tracking-wider">{{status}}</span>
+    </div>
+</section>

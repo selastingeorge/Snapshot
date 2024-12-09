@@ -1,0 +1,84 @@
+<section class="w-full h-full p-5 flex flex-col">
+    <div class="flex items-center gap-5">
+        <a routerLink="/" class="px-4 py-2 bg-white/5 text-white rounded-full flex items-center gap-2 hover:bg-white/10 transition">
+            <i class="ph-duotone ph-arrow-u-up-left text-lg"></i>
+            
+        </a>
+        <h2 class="text-3xl me-auto text-white font-medium font-poppins">Settings</h2>
+    </div>
+
+    <section class="w-full h-full flex flex-col">
+        <div class="w-full h-full mt-5 flex flex-col gap-4">
+            <div class="w-full flex items-center gap-5 p-4 bg-white/5 rounded-md">
+                <i class="ph-duotone ph-folder text-2xl text-white"></i>
+                <div class="flex flex-col">
+                    <span class="text-white text-lg">Screenshots Directory</span>
+                    <span class="text-sm text-muted">{{screenshotsDir?.value}}</span>
+                </div>
+                <button class="ms-auto px-3 py-2 text-white bg-white/5 rounded-md text-base hover:bg-white/10 transition" (click)="onChangeDirectory()">Change</button>
+            </div>
+
+            <div class="w-full flex items-center gap-5 p-4 bg-white/5 rounded-md">
+                <i class="ph-duotone ph-timer text-2xl text-white"></i>
+                <div class="flex flex-col">
+                    <span class="text-white text-lg">Screenshots Duration</span>
+                    <span class="text-sm text-muted">{{ screenshotsDuration?.value/1000 }} Seconds</span>
+                </div>
+                <div class="relative cursor-pointer ms-auto">
+                    <select class="px-5 py-2 pe-8 appearance-none bg-white/5 text-white outline-none cursor-pointer" (change)="onDurationChange($event)">
+                        <option value="5000" [selected]="screenshotsDuration?.value  == 5000">5 seconds</option>
+                        <option value="10000" [selected]="screenshotsDuration?.value == 10000">10 seconds</option>
+                        <option value="15000" [selected]="screenshotsDuration?.value == 15000">15 seconds</option>
+                        <option value="20000" [selected]="screenshotsDuration?.value == 20000">20 seconds</option>
+                        <option value="25000" [selected]="screenshotsDuration?.value == 25000">25 seconds</option>
+                        <option value="30000" [selected]="screenshotsDuration?.value == 30000">30 seconds</option>
+                        <option value="35000" [selected]="screenshotsDuration?.value == 35000">35 seconds</option>
+                    </select>
+                    <div class="absolute right-2 top-[50%] -translate-y-[50%] pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full flex items-center gap-5 p-4 bg-white/5 rounded-md">
+                <i class="ph-duotone ph-hourglass text-2xl text-white"></i>
+                <div class="flex flex-col">
+                    <span class="text-white text-lg">Screenshots Delay</span>
+                    <span class="text-sm text-muted">{{screenshotsInterval?.value}} Milliseconds</span>
+                </div>
+                <div class="relative cursor-pointer ms-auto">
+                    <select class="px-5 py-2 pe-8 appearance-none bg-white/5 text-white outline-none cursor-pointer" (change)="onIntervalChange($event)">
+                        <option value="500" [selected]="screenshotsInterval?.value  == 500">500 milliseconds</option>
+                        <option value="1000" [selected]="screenshotsInterval?.value  == 1000">1000 milliseconds</option>
+                        <option value="1500" [selected]="screenshotsInterval?.value  == 1500">1500 milliseconds</option>
+                        <option value="2000" [selected]="screenshotsInterval?.value  == 2000">2000 milliseconds</option>
+                        <option value="2500" [selected]="screenshotsInterval?.value  == 2500">2500 milliseconds</option>
+                        <option value="3000" [selected]="screenshotsInterval?.value  == 3000">3000 milliseconds</option>
+                        <option value="3500" [selected]="screenshotsInterval?.value  == 3500">3500 milliseconds</option>
+                        <option value="4000" [selected]="screenshotsInterval?.value  == 4000">4000 milliseconds</option>
+                        <option value="4500" [selected]="screenshotsInterval?.value  == 4500">4500 milliseconds</option>
+                        <option value="5000" [selected]="screenshotsInterval?.value  == 5000">5000 milliseconds</option>
+                    </select>
+                    <div class="absolute right-2 top-[50%] -translate-y-[50%] pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full flex items-center gap-5 p-4 bg-white/5 rounded-md">
+                <i class="ph-duotone ph-trash text-2xl text-white"></i>
+                <div class="flex flex-col">
+                    <span class="text-white text-lg">Clear Screenshots</span>
+                    <span class="text-sm text-muted">Remove all files in the screenshots directory</span>
+                </div>
+                <button class="ms-auto px-3 py-2 text-white bg-white/5 rounded-md text-base hover:bg-white/10 transition" (click)="onClearDataClicked($event)">Clear Data</button>
+            </div>
+        </div>
+    </section>
+
+    
+</section>

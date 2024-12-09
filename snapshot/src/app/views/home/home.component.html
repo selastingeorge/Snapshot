@@ -1,0 +1,42 @@
+<section class="w-full h-full flex items-center justify-center">
+    <div class="container max-w-[700px]">
+        <div class="flex flex-col gap-3">
+            <h1 class="mx-auto text-center text-4xl font-medium font-poppins text-white">Snapshot</h1>
+            <div class="px-4 py-2 mx-auto text-xs bg-white/5 rounded-fullfont-inter font-medium text-white rounded-full">Version 0.1.0</div>
+        </div>
+        <div class="flex flex-col gap-3 pt-10">
+            <app-card-view title="Capture Snapshots" caption="Start capturing the chrome windows in the compositor" route="capture" icon="ph-duotone ph-monitor-arrow-up"></app-card-view>
+            <app-card-view title="Bookmarks" caption="Launch a Group of URL's in chrome window" route="bookmarks" icon="ph-duotone ph-bookmarks-simple"></app-card-view>
+            <app-card-view title="Browse Screenshots" caption="Browse Screenshots Directory" icon="ph-duotone ph-images" (click)="onBrowseScreenshotsClicked()"></app-card-view>
+            <app-card-view title="Settings" caption="Customize settings for capturing and compositor" route="settings" icon="ph-duotone ph-gear"></app-card-view>
+        </div>
+    </div>
+
+    <button class="w-[50px] h-[50px] rounded-xl absolute bottom-10 left-10 bg-white/5 hover:bg-white/10 z-20 flex items-center justify-center" (click)="toggleDrawer()">
+        @if(drawerOpen)
+        {
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        }
+        @else {
+            <i class="ph-duotone ph-squares-four text-2xl text-white"></i>
+        }
+    </button>
+
+    @if(drawerOpen)
+    {
+        <section class="w-full h-full fixed z-10 bg-dark px-10 py-10 transition" [@fadeInOut]>
+            <div class="container">
+                <span class="font-medium text-4xl text-white">Apps</span>
+                <section class="mt-8 flex" (click)="launchChrome()">
+                    <div class="p-5 pb-3 bg-white/5 flex flex-col gap-1.5 rounded-lg cursor-pointer hover:bg-white/10 transition">
+                        <img src="assets/chrome.svg" alt="Google chrome" width="48" height="48">
+                        <span class="text-sm text-white">Chrome</span>
+                    </div>
+                </section>
+            </div>
+        </section>
+    }
+</section>

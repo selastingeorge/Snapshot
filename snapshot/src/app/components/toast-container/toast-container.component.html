@@ -1,0 +1,3 @@
+<div class="fixed bottom-0 left-[50%] p-4 space-y-4 z-50 -translate-x-[50%]">
+    <app-toast class="mx-auto" *ngFor="let toast of toasts$ | async" [toast]="toast"></app-toast>
+</div>

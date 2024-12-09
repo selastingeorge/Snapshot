@@ -1,0 +1,17 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base
+{
+    html,body 
+    {
+        @apply w-full;
+        @apply h-full;
+        @apply m-0;
+        @apply font-inter;
+        @apply select-none;
+        @apply cursor-default;
+    }
+}

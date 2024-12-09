@@ -1,0 +1,34 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "shell:allow-open",
+    "sql:default",
+    "sql:allow-load",
+    "sql:allow-execute",
+    "sql:allow-select",
+    "shell:allow-spawn",
+    "shell:default",
+    {
+      "identifier": "shell:allow-execute",
+      "allow": [
+        {
+          "name": "google-chrome",
+          "cmd": "google-chrome",
+          "args": ["--ozone-platform=wayland","--new-window",{ "validator": "\\S+" }]
+        },
+        {
+          "name": "open",
+          "cmd": "open",
+          "args": [{ "validator": "\\S+" }]
+        }
+      ]
+    },
+    "dialog:default"
+  ]
+}

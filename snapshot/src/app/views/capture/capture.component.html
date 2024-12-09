@@ -1,0 +1,73 @@
+<section class="w-full h-full flex items-center justify-center">
+    <div class="container max-w-[700px] flex flex-col gap-5">
+        <h2 class="text-3xl mx-auto text-white font-medium font-poppins">Capture Snapshot</h2>
+        <div class="flex flex-col bg-white/5 rounded-md p-8 gap-10 mt-5">
+            <div class="flex flex-col">
+                <div class="relative w-[140px] mx-auto">
+                    <round-progress
+                    class="mx-auto transition-colors"
+                    [current]="captureProgress"
+                    [max]="100"
+                    [color]="captureStopped == true ? '#FF0000' : (captureCompleted ? '#089444' : '#3B82F6')"
+                    [background]="'#484545'"
+                    [radius]="70"
+                    [stroke]="10"
+                    [semicircle]="false"
+                    [rounded]="true"
+                    [clockwise]="false"
+                    [responsive]="false"
+                    [duration]="800"
+                    [animation]="'easeInOutQuart'"
+                    [animationDelay]="0"/>
+                    <div class="text-lg flex-col items-center justify-center font-medium text-white absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] flex gap-0.5">
+                        <span class="min-w-[24px] text-center">{{status}}</span>
+                        @if(isCapturing)
+                        {
+                            <span class="text-xs text-muted">{{progress}}/{{total}}</span>
+                        }
+                    </div>
+                </div>
+            </div>
+    
+            <button class="px-8 py-3 mx-auto rounded-full font-medium text-white flex items-center justify-center gap-3 {{ isCapturing ? 'bg-red-500' : 'bg-[#3B82F6]' }}" (click)="onStartCapturing()">
+                <i class="{{ isCapturing ? 'ph-duotone ph-stop' : 'ph-duotone ph-play' }} text-lg"></i>
+                {{ isCapturing ? 'Stop Capturing' : 'Start Capturing' }}
+            </button>
+    
+            <div class="w-full grid grid-cols-2 gap-5">
+                <div class="w-full p-5 bg-white/5 rounded-lg flex flex-col gap-2">
+                    <div class="flex items-center gap-4">
+                        <i class="ph-duotone ph-clock-countdown text-white text-4xl"></i>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-medium text-white">Capture Interval</span>
+                            <span class="text-sm font-medium text-white/60">{{screenshotsInterval?.value}} milliseconds</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full p-5 bg-white/5 rounded-lg flex flex-col gap-2">
+                    <div class="flex items-center gap-4">
+                        <i class="ph-duotone ph-hourglass-high text-white text-4xl"></i>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-medium text-white">Capture Duration</span>
+                            <span class="text-sm font-medium text-white/60">{{screenshotsDuration?.value/1000}} seconds</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="w-full p-5 bg-white/5 rounded-lg flex flex-col gap-2 col-span-2">
+                    <div class="flex items-center gap-4">
+                        <i class="ph-duotone ph-folder-open text-white text-4xl"></i>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-medium text-white">Screenshot Directory</span>
+                            <span class="text-sm font-medium text-white/60">{{screenshotsDir?.value}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a routerLink="/" class="px-4 py-2 bg-white/5 text-white rounded-full me-auto flex items-center gap-2 hover:bg-white/10 transition">
+            <i class="ph-duotone ph-arrow-u-up-left text-lg"></i>
+            Go Back
+        </a>
+    </div>
+</section>
