@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Snapshot
+Comment=Open Snapshot
+Terminal=true
+Exec=sh -c 'labwc -d -s "/usr/local/bin/snapshot/launcher/apps.sh"'
+Icon=/usr/local/bin/snapshot/launcher/icon.png
