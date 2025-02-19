@@ -1,0 +1,18 @@
+<section class="w-full h-full flex items-center justify-center">
+    <div class="container max-w-[700px]">
+        <div class="flex flex-col gap-3">
+            <h1 class="mx-auto text-center text-4xl font-medium font-poppins text-white">Snapshot</h1>
+            <div class="px-4 py-2 mx-auto text-xs bg-white/5 rounded-fullfont-inter font-medium text-white rounded-full">Version 0.1.0</div>
+        </div>
+        <div class="flex flex-col gap-3 pt-10">
+            <app-card-view title="Scan Screenshots" caption="Scan screenshots for region differences and export the results to an Excel sheet." route="/scanner" icon="ph-duotone ph-barcode"></app-card-view>
+            <app-card-view title="Scan Region Presets" caption="Manage preset coordinates for accurate and efficient scanning." route="/scan-region-presets" icon="ph-duotone ph-frame-corners"></app-card-view>
+            <app-card-view title="Settings" caption="Customize settings with your Google Drive URL, Node ID, and other preferences." route="settings" icon="ph-duotone ph-gear"></app-card-view>
+        </div>
+    </div>
+
+    <a routerLink="/home" class="h-[50px] absolute bottom-10 left-10 px-5 gap-3 text-white rounded-xl bg-white/5 hover:bg-white/10 z-20 flex items-center justify-center" title="Phase 2">
+        <i class="ph-duotone ph-arrow-u-up-left text-lg"></i>
+        <span class="text-white">Go Back</span>
+    </a>
+</section>

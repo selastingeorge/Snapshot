@@ -4,11 +4,12 @@ import { LauncherService } from '../../services/launcher/launcher.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { Settings } from '../../interfaces/settings';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { RouterModule } from '@angular/router';
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [CardViewComponent],
+	imports: [CardViewComponent, RouterModule],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.css',
 	animations: [
@@ -37,7 +38,7 @@ export class HomeComponent {
 
 	public async launchChrome()
 	{
-		await this.launcherService.launchChrome("https://google.com");
+		await this.launcherService.launchChrome("google","https://google.com");
 	}
 
 	public async onBrowseScreenshotsClicked() {

@@ -843,7 +843,7 @@ xdg_toplevel_new(struct wl_listener *listener, void *data)
 	view->type = LAB_XDG_SHELL_VIEW;
 	view->impl = &xdg_toplevel_view_impl;
 	xdg_toplevel_view->xdg_surface = xdg_surface;
-
+	
 	/*
 	 * Pick an output for the surface as soon as its created, so that the
 	 * client can be notified about any fractional scale before it is given

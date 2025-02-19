@@ -2359,6 +2359,7 @@ handle_map(struct wl_listener *listener, void *data)
 	assert(output_is_usable(output));
 
 	const char *app_id = view_get_string_prop(view, "app_id");
+
     if(strcmp(app_id,"google-chrome") == 0)
 	{
 		view->maximized = VIEW_AXIS_BOTH;

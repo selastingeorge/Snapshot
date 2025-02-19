@@ -8,6 +8,7 @@
   "permissions": [
     "core:default",
     "shell:allow-open",
+    "dialog:allow-open",
     "sql:default",
     "sql:allow-load",
     "sql:allow-execute",
@@ -18,9 +19,9 @@
       "identifier": "shell:allow-execute",
       "allow": [
         {
-          "name": "google-chrome",
-          "cmd": "google-chrome",
-          "args": ["--ozone-platform=wayland","--new-window",{ "validator": "\\S+" }]
+          "name": "shell",
+          "cmd": "sh",
+          "args": ["-c",{ "validator": ".+" }] 
         },
         {
           "name": "open",

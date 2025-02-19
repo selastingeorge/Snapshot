@@ -23,7 +23,13 @@
                         <span class="min-w-[24px] text-center">{{status}}</span>
                         @if(isCapturing)
                         {
-                            <span class="text-xs text-muted">{{progress}}/{{total}}</span>
+                            @if(status === "Capturing")
+                            {
+                                <span class="text-xs text-muted">{{progress}}</span>
+                            }
+                            @else {
+                                <span class="text-xs text-muted">{{progress}} / {{total}}</span>
+                            }
                         }
                     </div>
                 </div>

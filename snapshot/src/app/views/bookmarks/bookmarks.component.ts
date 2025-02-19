@@ -115,6 +115,17 @@ export class BookmarksComponent {
 		}
 	}
 
+	extractHostName(url: string): string {
+		try {
+			const hostname = new URL(url).hostname;
+			return hostname.replace('www.', '').split('.')[0];
+		}
+		catch (error) {
+			console.error(`Invalid URL: ${url}`, error);
+			return "unknown";
+		}
+	}
+
 	onLaunchClicked(id: number, e: MouseEvent) {
 		e.stopPropagation();
 
@@ -125,7 +136,10 @@ export class BookmarksComponent {
 		}
 
 		const urls: any[] = bookmark.bookmarks;
-		invoke('launch_chrome', { urls:urls });
+		const url_pairs: [string, string][] = urls.map(url => [this.extractHostName(url), url]);
+
+		console.log(typeof url_pairs);
+		invoke('launch_chrome', { pairs: url_pairs });
 	}
 
 }

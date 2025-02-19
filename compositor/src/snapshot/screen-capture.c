@@ -142,6 +142,10 @@ void capture_toplevels(long ms, struct server *server)
     wl_list_for_each(view, &server->views, link) 
     {
         const char *app_id = view_get_string_prop(view, "app_id");
+        const char *title = view->toplevel.handle->title;
+        wlr_log(WLR_ERROR,"%s",app_id);
+        wlr_log(WLR_ERROR,"%s",title);
+        
         if(strcmp(app_id,"google-chrome") == 0)
         {
             struct wlr_surface *surface = view->surface;
@@ -184,7 +188,8 @@ void capture_toplevels(long ms, struct server *server)
                 .width = width,
                 .height = height,
                 .browser = browser,
-                .time = ms
+                .time = ms,
+                .title = title
             };
 
             pthread_mutex_lock(&screenshots_mutex);
@@ -217,7 +222,7 @@ void capture_toplevels(long ms, struct server *server)
     wlr_log(WLR_INFO,"Capturing Task completed for %ld th millisecond. Elaspsed : %f ms",ms,elapsed_time);
 }
 
-char* create_path(int time, int browser)
+char* create_path(int time, int browser, char* filename)
 {
     char *output_directory = capture_config.output_directory;
     int size = strlen(output_directory) + 50;
@@ -227,7 +232,7 @@ char* create_path(int time, int browser)
         wlr_log(WLR_ERROR,"%s", "Failed to allocate memory for output path");
         return NULL;
     }
-    snprintf(full_path, size, "%s/browser %d/%d.png", output_directory, browser, time);
+    snprintf(full_path, size, "%s/browser %d/%s-%d.png", output_directory, browser, filename, time);
     return full_path;
 }
 
@@ -277,7 +282,7 @@ void* save_screenshots_thread(void* arg)
     pthread_mutex_lock(&screenshots_mutex);
     for (size_t i = 0; i < capture_state.captured_screenshots; i++)
     {
-        char *path = create_path(screenshots[i].time, screenshots[i].browser);
+        char *path = create_path(screenshots[i].time, screenshots[i].browser, screenshots[i].title);
 
         if(create_directories(path) == 0)
         {

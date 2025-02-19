@@ -27,6 +27,7 @@ struct screenshot
     int height;
     int browser;
     int time;
+    char* title;
 };
 
 extern struct capture_config capture_config;
@@ -39,7 +40,7 @@ void capture_frames(struct timespec now, struct server *server);
 void capture_toplevels(long ms, struct server *server);
 int create_directory(const char *path);
 int create_directories(const char *path);
-char* create_path(int time, int browser);
+char* create_path(int time, int browser, char* filename);
 void* save_screenshots_thread(void* arg);
 
 #endif

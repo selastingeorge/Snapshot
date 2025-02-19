@@ -12,6 +12,9 @@ module.exports = {
 			'2xl': '1200px',
 		},
 		extend: {
+			spacing: {
+				'toolbar-subtracted': 'calc(100% - 60px)',
+			},
 			textColor:
 			{
 				muted:'#a1a1aa'

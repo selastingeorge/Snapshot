@@ -65,7 +65,7 @@ activate(GtkApplication *app, gpointer _data)
     }
 
     GtkWidget *image = gtk_picture_new_for_pixbuf(pixbuf);
-    gtk_picture_set_keep_aspect_ratio(GTK_PICTURE(image), FALSE);
+    gtk_picture_set_content_fit(GTK_PICTURE(image), FALSE);
     
     g_object_unref(pixbuf); // Free the pixbuf after use
 
@@ -93,7 +93,7 @@ activate(GtkApplication *app, gpointer _data)
     gtk_window_present(gtk_window);
 
     // Start the timer update function
-    g_timeout_add(10, (GSourceFunc)update_timer, GTK_LABEL(timer_label));
+    g_timeout_add(5, (GSourceFunc)update_timer, GTK_LABEL(timer_label));
 }
 
 int

@@ -8,8 +8,10 @@ export class LauncherService {
 
 	constructor() { }
 
-	async launchChrome(url: string) {
-		const command = Command.create('google-chrome',['--ozone-platform=wayland','--new-window',url]);
+	async launchChrome(name:string, url: string) {
+		let script = `google-chrome --ozone-platform=wayland --window-name="${name}" --new-window ${url}`
+		const command = Command.create('shell', ['-c',script]);
+
 		try {
 			const result = await command.execute();
 			console.log(result);

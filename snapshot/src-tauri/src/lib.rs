@@ -2,28 +2,29 @@ use tauri_plugin_sql::{Migration, MigrationKind};
 use std::process::Command;
 use std::fs;
 use std::path::Path;
-use std::io;
 
 #[tauri::command]
-fn launch_chrome(urls: Vec<String>) -> Result<String, String> {
-    if urls.is_empty() {
-        return Err("No URLs provided".into());
+fn launch_chrome(pairs: Vec<(String, String)>) -> Result<String, String> {
+    if pairs.is_empty() {
+        return Err("No name-URL pairs provided".into());
     }
 
-    for url in urls {
+    for (name, url) in pairs {
         let result = Command::new("google-chrome")
             .arg("--ozone-platform=wayland")
+            .arg(format!("--window-name={}", name))
             .arg("--new-window")
-            .arg(url)
+            .arg(url.clone())
             .spawn();
         
         if let Err(e) = result {
-            return Err(format!("Failed to launch Chrome: {}", e));
+            return Err(format!("Failed to launch Chrome window with name '{}': {}", name, e));
         }
     }
 
-    Ok("Chrome launched successfully with provided URLs.".into())
+    Ok("Chrome launched successfully with provided name-URL pairs.".into())
 }
+
 
 
 #[tauri::command]

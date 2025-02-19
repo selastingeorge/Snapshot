@@ -5,25 +5,32 @@
             <div class="px-4 py-2 mx-auto text-xs bg-white/5 rounded-fullfont-inter font-medium text-white rounded-full">Version 0.1.0</div>
         </div>
         <div class="flex flex-col gap-3 pt-10">
-            <app-card-view title="Capture Snapshots" caption="Start capturing the chrome windows in the compositor" route="capture" icon="ph-duotone ph-monitor-arrow-up"></app-card-view>
-            <app-card-view title="Bookmarks" caption="Launch a Group of URL's in chrome window" route="bookmarks" icon="ph-duotone ph-bookmarks-simple"></app-card-view>
+            <app-card-view title="Capture Snapshots" caption="Start capturing the chrome windows in the compositor" route="/capture" icon="ph-duotone ph-monitor-arrow-up"></app-card-view>
+            <app-card-view title="Bookmarks" caption="Launch a Group of URL's in chrome window" route="/bookmarks" icon="ph-duotone ph-bookmarks-simple"></app-card-view>
             <app-card-view title="Browse Screenshots" caption="Browse Screenshots Directory" icon="ph-duotone ph-images" (click)="onBrowseScreenshotsClicked()"></app-card-view>
-            <app-card-view title="Settings" caption="Customize settings for capturing and compositor" route="settings" icon="ph-duotone ph-gear"></app-card-view>
+            <app-card-view title="Settings" caption="Customize settings for capturing and compositor" route="/settings" icon="ph-duotone ph-gear"></app-card-view>
         </div>
     </div>
 
-    <button class="w-[50px] h-[50px] rounded-xl absolute bottom-10 left-10 bg-white/5 hover:bg-white/10 z-20 flex items-center justify-center" (click)="toggleDrawer()">
-        @if(drawerOpen)
-        {
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        }
-        @else {
-            <i class="ph-duotone ph-squares-four text-2xl text-white"></i>
-        }
-    </button>
+    <div class="absolute bottom-10 left-10 flex items-center justify-center gap-3">
+        <button class="w-[50px] h-[50px] rounded-xl bg-white/5 hover:bg-white/10 z-20 flex items-center justify-center" (click)="toggleDrawer()" title="Apps">
+            @if(drawerOpen)
+            {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            }
+            @else {
+                <i class="ph-duotone ph-squares-four text-2xl text-white"></i>
+            }
+        </button>
+    
+        <a routerLink="/phase2" class="h-[50px] px-5 gap-3 rounded-xl bg-white/5 hover:bg-white/10 z-20 flex items-center justify-center" title="Phase 2">
+            <i class="ph-duotone ph-cube-focus text-2xl text-white"></i>
+            <span class="text-white">Phase 2</span>
+        </a>
+    </div>
 
     @if(drawerOpen)
     {

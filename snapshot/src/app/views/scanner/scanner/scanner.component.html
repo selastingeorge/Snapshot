@@ -1,0 +1,48 @@
+<section class="w-full h-full flex items-center justify-center">
+    <div class="container max-w-[700px]">
+        <div class="flex flex-col gap-3">
+            <h1 class="mx-auto text-center text-4xl font-medium font-poppins text-white">Snapshot</h1>
+            <div class="px-4 py-2 mx-auto text-xs bg-white/5 rounded-fullfont-inter font-medium text-white rounded-full">Version 0.1.0</div>
+        </div>
+        <div class="flex flex-col gap-3 pt-10">
+            <div class="w-full bg-white/5 px-5 rounded-lg flex flex-col divide-y divide-white/5">
+                <div class="flex items-center justify-start gap-3 py-5">
+                    <div class="w-[24px] h-[24px] bg-green-600 rounded-full text-white flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="text-white">Valid screenshots directory</span>
+                </div>
+
+                <div class="flex items-center justify-start gap-3 py-5">
+                    <div class="w-[24px] h-[24px] bg-green-600 rounded-full text-white flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="text-white">Directory has screenshots</span>
+                </div>
+
+                <div class="flex items-center justify-start gap-3 py-5">
+                    <div class="w-[24px] h-[24px] bg-green-600 rounded-full text-white flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="text-white">Screeenshots in valid file format</span>
+                </div>
+            </div>
+
+            <button class="px-6 py-3.5 bg-white/5 text-white mx-auto rounded-lg flex items-center gap-2 hover:bg-white/10 mt-5 disabled:bg-white disabled:bg-opacity-[0.04] disabled:text-opacity-[0.5] disabled:cursor-not-allowed">
+                <i class="ph-duotone ph-scan text-xl"></i>
+                Start Scanning
+            </button>
+        </div>
+    </div>
+
+    <a routerLink="/phase2" class="h-[50px] absolute bottom-10 left-10 px-5 gap-3 text-white rounded-xl bg-white/5 hover:bg-white/10 z-20 flex items-center justify-center" title="Phase 2">
+        <i class="ph-duotone ph-arrow-u-up-left text-lg"></i>
+        <span class="text-white">Go Back</span>
+    </a>
+</section>

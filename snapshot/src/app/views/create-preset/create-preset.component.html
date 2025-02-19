@@ -1,0 +1,81 @@
+<section class="w-full h-full p-5 flex flex-col">
+    <div class="w-full">
+        <div class="flex items-center gap-5">
+            <a routerLink="/scan-region-presets"
+                class="px-4 py-2 bg-white/5 text-white rounded-full flex items-center gap-2 hover:bg-white/10 transition">
+                <i class="ph-duotone ph-arrow-u-up-left text-lg"></i>
+            </a>
+            <h2 class="text-3xl me-auto text-white font-medium font-poppins">{{preset?"Edit preset":"Create a new preset"}}</h2>
+        </div>
+    </div>
+
+    <section class="w-full h-toolbar-subtracted flex mt-5 gap-5">
+        <div class="w-full h-full bg-white bg-opacity-[0.02] border border-white/5 rounded-xl flex items-center justify-center p-5">
+            <div class="relative" id="image-container">
+                <div [ngClass]="{'hidden': !uploadedImageUrl, 'block': uploadedImageUrl}">
+                    <angular-cropper #cropper [cropperOptions]="config" [imageUrl]="uploadedImageUrl" (ready)="onCropperReady()"></angular-cropper>
+                </div>
+                <div [ngClass]="{'hidden': uploadedImageUrl, 'flex': !uploadedImageUrl}" class="w-full h-full flex-col items-center justify-center">
+                    <h2 class="text-2xl text-white">No Screenshot selected yet</h2>
+                </div>
+            </div>
+        </div>
+        <div class="w-[650px] bg-white bg-opacity-[0.02] border border-white/5 rounded-xl p-5">
+            <h2 class="text-2xl font-medium text-white">Configure Preset</h2>
+            <form class="w-full flex flex-col gap-5 mt-5" [formGroup]="presetForm" (ngSubmit)="onPresetSubmit()" method="post">
+                <div class="flex flex-col">
+                    <label class="text-white">Website URL<sup class="text-red-500">*</sup></label>
+                    <input type="url" class="w-full h-[45px] bg-transparent border px-3 outline-none ring-[#3B82F6] border-white/5 bg-white bg-opacity-[0.03] rounded-md mt-3 text-white focus:bg-opacity-[0.05] focus:ring-2" placeholder="https://betano.pt" formControlName="website_url" [value]="preset?preset.website_url:''" required>
+                </div>
+                @if(!isEditMode) {
+                    <div class="flex flex-col">
+                        <label class="text-white">Choose Image Sample<sup class="text-red-500">*</sup></label>
+                        <label for="normal-folder-picker">
+                            <div class="w-full flex items-center bg-transparent border px-2 py-2 outline-none ring-[#3B82F6] border-white/5 bg-white bg-opacity-[0.03] rounded-md mt-3 text-white">
+                                <span class="text-white ms-3 block text-ellipsis overflow-hidden whitespace-nowrap me-3">{{(file)?file.name:"No image selected"}}</span>
+                                <input #imageFile type="file" class="hidden" accept="image/*" (change)="onImageUploaded($event)">
+                                <button type="button" class="px-5 py-2 text-white bg-white/5 rounded-md ms-auto hover:bg-white/10" (click)="onBrowseImage()">Browse</button>
+                            </div>
+                        </label>
+                    </div>
+                }
+                <div class="flex flex-col">
+                    <label class="text-white">Region of change<sup class="text-red-500">*</sup></label>
+                    <div class="grid grid-cols-2 grid-rows-2 gap-3">
+                        <div class="w-full h-[50px] flex items-center rounded-lg text-center text-white border bg-white/5 py-3 mt-3 border-white/5 min-w-[124px]">
+                            <div class="h-full flex gap-4 px-4">
+                                <span class="text-white/50">X1</span>
+                                <span class="text-white">{{x1}}</span>
+                                <input type="hidden" formControlName="x1">
+                            </div>
+                        </div>
+                        <div class="w-full h-[50px] flex items-center rounded-lg text-center text-white border bg-white/5 py-3 mt-3 border-white/5 min-w-[124px]">
+                            <div class="h-full flex gap-4 px-4">
+                                <span class="text-white/50">X2</span>
+                                <span class="text-white">{{x2}}</span>
+                                <input type="hidden" formControlName="x2">
+                            </div>
+                        </div>
+                        <div class="w-full h-[50px] flex items-center rounded-lg text-center text-white border bg-white/5 py-3 mt-3 border-white/5 min-w-[124px]">
+                            <div class="h-full flex gap-4 px-4">
+                                <span class="text-white/50">Y1</span>
+                                <span class="text-white">{{y1}}</span>
+                                <input type="hidden" formControlName="y1">
+                            </div>
+                        </div>
+                        <div class="w-full h-[50px] flex items-center rounded-lg text-center text-white border bg-white/5 py-3 mt-3 border-white/5 min-w-[124px]">
+                            <div class="h-full flex gap-4 px-4">
+                                <span class="text-white/50">Y2</span>
+                                <span class="text-white">{{y2}}</span>
+                                <input type="hidden" formControlName="y2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <button type="submit" class="px-4 py-2 text-white bg-[#3B82F6] rounded-md hover:bg-[#336ece] transition me-auto">{{preset?"Update Preset":"Save Preset"}}</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</section>
